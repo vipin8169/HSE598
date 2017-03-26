@@ -61,12 +61,15 @@ p4 <- ggplot(powerPlantdata, aes(x = PE, y = RH)) +
   labs (y = "Energy output (MW)", x = "Relative Humidity(%)",
         title ="Power output vs. Relative humidity")
 
+# scatter plots of outcome and the four predictors in a 2X2 matrix
 grid.arrange(p1, p2, p3, p4, ncol=2)
 
 
 fit2 <- lm(PE ~ AT + V + AP, data=powerPlantdata)
 fit3 <- lm(PE ~ AT + V + RH, data=powerPlantdata)
 fit4 <- lm(PE ~ AT + RH + AP, data=powerPlantdata)
+
+# ANOVA of the three other models with the first one
 anova(fit1, fit2)
 anova(fit1, fit3)
 anova(fit1, fit4)
